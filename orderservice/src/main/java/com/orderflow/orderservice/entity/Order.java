@@ -11,16 +11,16 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
-@Data                    // (1) getter + setter + equals + hashCode + toString
-@NoArgsConstructor       // (2) Hibernate ke liye zaroori — empty constructor
-@AllArgsConstructor      // (3) sab fields ka constructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "customer_name", nullable = false)    // (5)
+    @Column(name = "customer_name", nullable = false)
     private String customerName;
     @Column(name = "product_name", nullable = false)
     private String productName;
@@ -28,13 +28,13 @@ public class Order {
     private Integer quantity;
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
-    @Enumerated(EnumType.STRING)                         // (7)
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private OrderStatus status;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @PrePersist                                          // (8)
+    @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
         if (this.status == null) {
