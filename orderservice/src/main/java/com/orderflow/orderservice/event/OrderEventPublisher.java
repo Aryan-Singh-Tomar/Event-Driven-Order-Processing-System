@@ -26,7 +26,7 @@ public class OrderEventPublisher {
                 log.info("OrderCreatedEvent published | orderId={} | partition={} | offset={}",
                         event.getOrderId(),
                         result.getRecordMetadata().partition(),
-                        result.getRecordMetadata().offset()   // (7)
+                        result.getRecordMetadata().offset()
                 );
             }else{
                 log.error("Failed to publish OrderCreatedEvent | orderId={} | error={}",
