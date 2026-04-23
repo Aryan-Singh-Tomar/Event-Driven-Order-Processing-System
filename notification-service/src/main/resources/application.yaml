@@ -1,11 +1,11 @@
 spring:
   application:
-    name: inventory-service
+    name: notification-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/inventorydb
-    username: inventoryuser
-    password: inventorypass
+    url: jdbc:postgresql://localhost:5434/notificationdb
+    username: notificationuser
+    password: notificationpass
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -20,21 +20,21 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
-      group-id: inventory-service-group
+      group-id: notification-service-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
         spring.json.use.type.headers: false
-        spring.json.value.default.type: com.orderflow.inventoryservice.event.OrderCreatedEvent
+        spring.json.value.default.type: com.orderflow.notificationservice.event.OrderCreatedEvent
 
 kafka:
   topics:
     order-created: order-created
 
 server:
-  port: 8081
+  port: 8082
 
 logging:
   level:

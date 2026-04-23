@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
-    private final OrderEventPublisher orderEventPublisher;   // (1)
+    private final OrderEventPublisher orderEventPublisher;
     @Override
     @Transactional
     public OrderResponse createOrder(CreateOrderRequest request) {
@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
                 .productName(request.getProductName())
                 .quantity(request.getQuantity())
                 .price(request.getPrice())
-                .build();   // (7) status aur createdAt @PrePersist set karega
+                .build();   //status aur createdAt @PrePersist set karega
     }
 
     private OrderResponse mapToResponse(Order order) {

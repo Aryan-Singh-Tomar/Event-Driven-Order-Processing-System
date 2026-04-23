@@ -20,8 +20,8 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer      # (2)
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer  # (3)
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.trusted.packages: "*"
         spring.json.add.type.headers: false
